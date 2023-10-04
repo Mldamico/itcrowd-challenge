@@ -1,1 +1,1 @@
-# ITCrowd Javascrip Challenge
+# ITCrowd Javascript Challenge
