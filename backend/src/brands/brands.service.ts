@@ -1,26 +1,52 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Brand } from './entities/brand.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BrandsService {
-  create(createBrandDto: CreateBrandDto) {
-    return 'This action adds a new brand';
+  constructor(
+    @InjectRepository(Brand) private readonly brandRepository: Repository<Brand>) { }
+  async create(createBrandDto: CreateBrandDto) {
+    console.log(createBrandDto);
+    const brand = await this.brandRepository.create(createBrandDto);
+    await this.brandRepository.save(brand);
   }
 
-  findAll() {
-    return `This action returns all brands`;
+  async findAll() {
+    return await this.brandRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} brand`;
+  async findOne(id: number) {
+    const product = await this.brandRepository.findOneBy({ id });
+    if (!product) throw new NotFoundException('brand not found');
+    return product;
   }
 
-  update(id: number, updateBrandDto: UpdateBrandDto) {
-    return `This action updates a #${id} brand`;
+  async update(id: number, updateBrandDto: UpdateBrandDto) {
+
+    const brand = await this.brandRepository.preload({
+      id,
+      ...updateBrandDto,
+
+    });
+
+    if (!brand) throw new NotFoundException('brand not found');
+
+    try {
+      return this.brandRepository.save(brand);
+
+    } catch (err) {
+
+      throw new InternalServerErrorException('something went wrong');
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} brand`;
+  async remove(id: number) {
+    const product = await this.brandRepository.findOneBy({ id });
+    if (!product) throw new NotFoundException('brand not found');
+    await this.brandRepository.remove(product);
   }
 }

@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Product } from "src/products/entities/product.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Brand {
@@ -10,4 +11,14 @@ export class Brand {
 
   @Column()
   logo_url: string;
+
+  @OneToMany(
+    () => Product,
+    (productBrand) => productBrand.brand,
+    {
+      cascade: true, onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    }
+  )
+  products?: Product[];
 }
