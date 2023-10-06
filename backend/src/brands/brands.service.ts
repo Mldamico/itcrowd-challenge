@@ -8,7 +8,9 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class BrandsService {
   constructor(
-    @InjectRepository(Brand) private readonly brandRepository: Repository<Brand>) { }
+    @InjectRepository(Brand) private readonly brandRepository: Repository<Brand>,
+  ) { }
+
   async create(createBrandDto: CreateBrandDto) {
     const brand = await this.brandRepository.create(createBrandDto);
     await this.brandRepository.save(brand);
