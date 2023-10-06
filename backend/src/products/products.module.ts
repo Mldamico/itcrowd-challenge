@@ -11,7 +11,10 @@ import { Brand } from 'src/brands/entities/brand.entity';
   providers: [ProductsService],
   imports: [
     TypeOrmModule.forFeature([Product, Brand]),
-
+  ],
+  exports: [
+    ProductsService,
+    TypeOrmModule
   ]
 })
 export class ProductsModule { }

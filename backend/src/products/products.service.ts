@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, Logger, 
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DataSource, Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { PaginationDto } from 'src/common/dot/pagination.dto';
 import { Brand } from 'src/brands/entities/brand.entity';
@@ -12,7 +12,8 @@ export class ProductsService {
 
   private readonly logger = new Logger('ProductsService');
   constructor(@InjectRepository(Product) private readonly productRepository: Repository<Product>,
-    @InjectRepository(Brand) private readonly brandRepository: Repository<Brand>) { }
+    @InjectRepository(Brand) private readonly brandRepository: Repository<Brand>,
+    private readonly dataSource: DataSource) { }
 
   async create(createProductDto: CreateProductDto) {
 
@@ -43,7 +44,7 @@ export class ProductsService {
   }
 
   async findOne(id: number) {
-    const product = await this.productRepository.findOneBy({ id });
+    const product = await this.productRepository.findOne({ where: { id }, relations: { brand: true } });
     if (!product) throw new NotFoundException('product not found');
     return product;
   }
@@ -53,13 +54,14 @@ export class ProductsService {
     const product = await this.productRepository.preload({
       id,
       ...updateProductDto,
-
     });
 
     if (!product) throw new NotFoundException('product not found');
 
+
     try {
-      return this.productRepository.save(updateProductDto);
+
+      return this.productRepository.save(product);
 
     } catch (err) {
       this.logger.error(err);
@@ -73,5 +75,15 @@ export class ProductsService {
     if (!product) throw new NotFoundException('product not found');
     await this.productRepository.remove(product);
 
+  }
+
+  async deleteProducts() {
+    const query = this.productRepository.createQueryBuilder('product');
+
+    try {
+      return await query.delete().where({}).execute();
+    } catch (err) {
+      throw new InternalServerErrorException('something went wrong');
+    }
   }
 }
