@@ -1,3 +1,5 @@
+import * as bcrypt from 'bcrypt';
+
 interface BrandSeed {
   id: number;
   name: string;
@@ -11,12 +13,24 @@ interface ProductSeed {
   brandId: number;
 }
 
+interface UserSeed {
+  email: string;
+  password: string;
+}
+
 interface SeedData {
+  users: UserSeed[];
   brands: BrandSeed[];
   products: ProductSeed[];
 }
 
 export const seedData: SeedData = {
+  users: [
+    {
+      email: 'admin@itcrowd.com',
+      password: bcrypt.hashSync("123456", 10)
+    }
+  ],
   brands: [
     { id: 1, name: "Selú", logo_url: 'https://s3.eu-west-1.amazonaws.com/cdn.spydeals.nl/images/uploads/pcfSxiI15V0xDIW8A4MpnOXcZ0YSPU8Q9HFZFBbP.png' },
     { id: 2, name: "Perlea", logo_url: 'https://www.perlea.com.ar/one-page/images/logo_perlea.png' },
