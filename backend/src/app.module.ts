@@ -8,6 +8,7 @@ import { BrandsModule } from './brands/brands.module';
 import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
     CommonModule,
     SeedModule,
     CloudinaryModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

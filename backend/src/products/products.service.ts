@@ -12,8 +12,7 @@ export class ProductsService {
 
   private readonly logger = new Logger('ProductsService');
   constructor(@InjectRepository(Product) private readonly productRepository: Repository<Product>,
-    @InjectRepository(Brand) private readonly brandRepository: Repository<Brand>,
-    private readonly dataSource: DataSource) { }
+  ) { }
 
   async create(createProductDto: CreateProductDto) {
 
