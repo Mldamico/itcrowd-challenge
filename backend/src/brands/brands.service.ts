@@ -46,8 +46,8 @@ export class BrandsService {
   }
 
   async remove(id: number) {
-    const product = await this.brandRepository.findOneBy({ id });
-    if (!product) throw new NotFoundException('brand not found');
-    await this.brandRepository.remove(product);
+    const brand = await this.brandRepository.findOneBy({ id });
+    if (!brand) throw new NotFoundException('brand not found');
+    await this.brandRepository.remove(brand);
   }
 }

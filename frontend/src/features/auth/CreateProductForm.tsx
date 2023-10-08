@@ -7,6 +7,7 @@ import { Dropzone } from "./Dropzone";
 import { createProduct, updateProduct } from "../../api/apiProducts";
 import toast from "react-hot-toast";
 import { Product } from "../../interfaces/products";
+import { Loading } from "../ui/Layout/Loading";
 
 
 interface Props {
@@ -77,7 +78,7 @@ export const CreateProductForm = ({ product, edit = false, resetForm }: Props) =
     }
     resetForm();
   };
-  if (!brands) return <p>Loading...</p>;
+  if (!brands) return <Loading />;
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex max-w-md mx-auto flex-col gap-4'>
       <div>

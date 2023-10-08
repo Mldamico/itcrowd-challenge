@@ -57,3 +57,133 @@ Run Seed if need it
 ```
 https://itcrowd-challenge-production.up.railway.app/api/seed
 ```
+
+# Basic Endpoints
+
+## Products
+
+### GET /products
+
+Find all products. Accept Query Parameters: Offset and limit for pagination and filter for filtering by name or description. By default offset is 0 and limit is 3.
+
+### GET /products/:id
+
+Find product by ID.
+
+### POST /products
+
+Need auth
+Create a product.
+
+```
+  {
+    "name": "string",
+    "description": "string",
+    "price":"number",
+    "image_url": "string",
+    "brandId": "number"
+  }
+```
+
+### PATCH /products/:id
+
+Need auth
+Update a product by ID.
+
+```
+  {
+    "name": "string",
+    "description": "string",
+    "price":"number",
+    "image_url": "string",
+    "brandId": "number"
+  }
+```
+
+### POST /products/upload
+
+Upload image into cloudinary
+
+Send through form/data with key file and Type file.
+
+
+### DELETE /products/:id
+
+Need auth
+Delete a product by ID.
+
+### DELETE /products
+
+Delete all products. It's only made for easier testing with the seed. That is also a reason it doesn't require auth. 
+
+## Seed
+
+### GET /seed
+
+Reset database and save 3 brands, 6 products and 1 user. 
+
+## Brands
+
+### GET /brands
+
+Find all brands
+
+### GET /brands/:id
+
+Find brand by ID
+
+### POST /brands
+
+Create a brand
+
+```
+  {
+    "name": "string",
+    "logo_url": "string"
+  }
+```
+
+### PATCH /brands/id
+
+Update a brand by ID
+
+```
+  {
+    "name": "string",
+    "logo_url": "string"
+  }
+```
+
+
+### DELETE /brands/id
+
+Delete a brand by ID
+
+## Auth
+
+### POST /auth/login
+
+Login an user
+
+```
+  {
+    "email":"admin@itcrowd.com",
+    "password":"123456"
+  }
+```
+
+### POST /auth/register
+
+Register a new user
+
+```
+  {
+    "email":"string",
+    "password":"string"
+  }
+```
+
+### GET /auth/me
+
+Need auth
+Return logged in user with refreshed token.

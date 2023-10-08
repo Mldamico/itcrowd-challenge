@@ -4,6 +4,7 @@ import { Product } from "../../interfaces/products";
 import { getProductById } from "../../api/apiProducts";
 import ProductCard from "../../features/products/ProductCard";
 import { Button } from "flowbite-react";
+import { Loading } from "../ui/Layout/Loading";
 
 export const ProductDetails = () => {
   const params = useParams();
@@ -17,7 +18,7 @@ export const ProductDetails = () => {
     }
   }, []);
 
-  if (!product) return <p>Loading...</p>;
+  if (!product) return <Loading />;
 
   return (
     <div className="flex flex-col items-center gap-10">

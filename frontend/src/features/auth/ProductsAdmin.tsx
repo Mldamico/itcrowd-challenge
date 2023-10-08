@@ -4,6 +4,7 @@ import { deleteProductsById, getProducts } from '../../api/apiProducts';
 import { Product } from '../../interfaces/products';
 import toast from 'react-hot-toast';
 import { CreateProductForm } from './CreateProductForm';
+import { Loading } from '../ui/Layout/Loading';
 
 export function ProductsAdmin() {
   const [products, setProducts] = useState<Product[] | undefined>();
@@ -38,7 +39,7 @@ export function ProductsAdmin() {
     setEditMode(false);
   };
 
-  if (!products) return <p>Loading...</p>;
+  if (!products) return <Loading />;
   return (
     <>
       <Table striped>
