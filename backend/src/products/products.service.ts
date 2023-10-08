@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, Logger, 
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DataSource, Repository } from 'typeorm';
+import { DataSource, Like, Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { PaginationDto } from 'src/common/dot/pagination.dto';
 import { Brand } from 'src/brands/entities/brand.entity';
@@ -32,13 +32,30 @@ export class ProductsService {
   }
 
   async findAll(paginationDto: PaginationDto) {
-    const { limit = 10, offset = 0 } = paginationDto;
-    return this.productRepository.find({
+    const { limit = 3, offset = 0, filter = '' } = paginationDto;
+    const totalCount = await this.productRepository.count();
+    const products = await this.productRepository.find({
       take: limit,
       skip: offset,
       relations: {
         brand: true
-      }
+      },
+      where: [
+        { name: Like(`%${filter}%`) },
+        { description: Like(`%${filter}%`) }
+      ]
+    });
+    return { products, totalCount };
+  }
+
+  async findByNameOrDescription(filter: string) {
+    const data = await this.productRepository;
+
+    return this.productRepository.find({
+      where: [
+        { name: Like(`${filter}%`) },
+        { description: Like(`${filter}%`) }
+      ]
     });
   }
 
@@ -49,7 +66,6 @@ export class ProductsService {
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {
-
     const product = await this.productRepository.preload({
       id,
       ...updateProductDto,

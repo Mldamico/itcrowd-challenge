@@ -41,42 +41,42 @@ export const seedData: SeedData = {
       name: 'Conjunto Taza soft + cola less',
       description: 'Conjunto Selú taza soft del talle 85 al 100 con cola less. Color blanco, rosa y negro',
       price: 20000,
-      image_url: 'https://res-console.cloudinary.com/arecyus/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/cm9zc2luYS9ja3VzZGdkdnAwMDE1MGx1ZzgzbXZnNGI0/template_primary',
+      image_url: 'https://res.cloudinary.com/arecyus/image/upload/v1634302404/rossina/ckusdgdvp00150lug83mvg4b4.jpg',
       brandId: 1
     },
     {
-      name: 'Conjunto Push Up + cola less',
+      name: 'Conjunto Push Up',
       description: 'Conjunto Selú push up del talle 85 al 100 con cola less. Color blanco y negro',
       price: 20000,
-      image_url: 'https://res-console.cloudinary.com/arecyus/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/cm9zc2luYS9ja3VzZGF4cGQwMDB3MGx1ZzZmdW00NHR1/template_primary',
+      image_url: 'https://res.cloudinary.com/arecyus/image/upload/v1634302170/rossina/ckusdbdox000y0lug6lgc6r08.jpg',
       brandId: 1
     },
     {
       name: 'Bombacha Selu',
       description: 'Bombacha culotte de la linea de Selú en blanco, nougat y negro',
       price: 5000,
-      image_url: 'https://res-console.cloudinary.com/arecyus/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/cm9zc2luYS9ja3F0a3NyNGwwMDBlMGwxamc3OWQwemRj/template_primary',
+      image_url: 'https://res.cloudinary.com/arecyus/image/upload/v1625668066/rossina/ckqtkske6000d0l1jgk1s8hdk.jpg',
       brandId: 1
     },
     {
-      name: 'Body sin busto',
-      description: 'Body sin busto de la linea de Mora',
+      name: 'Camiseta maternal',
+      description: 'Camiseta maternal de la linea de Mora. Disponible en talle 1/2 y 3/4 en color blanco y piel.',
       price: 10000,
-      image_url: 'https://res-console.cloudinary.com/arecyus/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/cm9zc2luYS9ja3Frdng4c3QwMDE1MGx2cTV4bHJmb3kz/template_primary',
+      image_url: 'https://res.cloudinary.com/arecyus/image/upload/v1624214481/rossina/ckq5jd6450000wdys62hgbsma.jpg',
       brandId: 3
     },
     {
       name: 'Corpiño Perlea',
       description: 'Corpiño reductor con aro de la linea de Perlea talles del 34C al 40C.',
       price: 15000,
-      image_url: 'https://res-console.cloudinary.com/arecyus/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/cm9zc2luYS9ja3EzcTc0d3gwMDA5bmJ5c2NqY2M1enBh/template_primary',
+      image_url: 'https://res.cloudinary.com/arecyus/image/upload/v1624104324/rossina/ckq3ps4bt0000nbysfo345yk6.jpg',
       brandId: 2
     },
     {
       name: 'Corpiño reductor sin aro',
       description: 'Corpiño reductor sin aro de la linea de Perlea. Talles del 34C al 42C.',
       price: 14000,
-      image_url: 'https://res-console.cloudinary.com/arecyus/thumbnails/transform/v1/image/upload/Y19saW1pdCxoXzE2MDAsd18xNjAwLGZfanBnLGZsX2xvc3N5LmFueV9mb3JtYXQucHJlc2VydmVfdHJhbnNwYXJlbmN5LnByb2dyZXNzaXZl/v1/cm9zc2luYS9ja3EzcTR3bWEwMDA3bmJ5czFwM2MxN3U0/template_primary',
+      image_url: 'https://res.cloudinary.com/arecyus/image/upload/v1624104494/rossina/ckq3pvr6s0002nbys50pl35sc.png',
       brandId: 2
     }
   ]

@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, UnauthorizedException, UseGuards } from '@nestjs/common';
 import { RegisterLoginDto } from './dto/register-login.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -6,6 +6,7 @@ import { Auth } from './entities/auth.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
+import { AuthGuard } from '@nestjs/passport';
 
 @Injectable()
 export class AuthService {
@@ -46,6 +47,11 @@ export class AuthService {
     } catch (error) {
       throw new InternalServerErrorException('something went wrong');
     }
+  }
+
+
+  async getUser(user: Auth) {
+    return { ...user, token: this.generateJwtToken({ id: user.id }) };
   }
 
   private generateJwtToken(payload: JwtPayload) {

@@ -11,4 +11,9 @@ export class PaginationDto {
   @Type(() => Number)
   @Min(0)
   offset?: number;
+
+  @IsOptional()
+  @Type(() => String)
+  filter?: string;
+
 }

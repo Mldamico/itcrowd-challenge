@@ -33,6 +33,12 @@ export class ProductsController {
     return this.productsService.findAll(paginationDto);
   }
 
+  @Get(':filter')
+  findByNameOrDescription(@Param('filter') filter) {
+
+    return this.productsService.findByNameOrDescription(filter);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productsService.findOne(+id);
