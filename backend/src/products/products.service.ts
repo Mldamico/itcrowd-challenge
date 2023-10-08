@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, InternalServerErrorException, Logger, 
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DataSource, Like, Repository } from 'typeorm';
+import { DataSource, ILike, Like, Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 import { PaginationDto } from 'src/common/dot/pagination.dto';
 import { Brand } from 'src/brands/entities/brand.entity';
@@ -41,22 +41,11 @@ export class ProductsService {
         brand: true
       },
       where: [
-        { name: Like(`%${filter}%`) },
-        { description: Like(`%${filter}%`) }
+        { name: ILike(`%${filter}%`) },
+        { description: ILike(`%${filter}%`) }
       ]
     });
     return { products, totalCount };
-  }
-
-  async findByNameOrDescription(filter: string) {
-    const data = await this.productRepository;
-
-    return this.productRepository.find({
-      where: [
-        { name: Like(`${filter}%`) },
-        { description: Like(`${filter}%`) }
-      ]
-    });
   }
 
   async findOne(id: number) {
