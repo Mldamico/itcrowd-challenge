@@ -2,7 +2,7 @@
 import { CreateProduct, Product, ProductResponse } from "../interfaces/products";
 import axios from "./axios";
 
-const getProducts = (offset = 0, limit = 3) => axios.get<ProductResponse>(`/products?offset=${offset}&limit=${limit}`);
+const getProducts = (offset = 0, limit = 3, filter = '') => axios.get<ProductResponse>(`/products?offset=${offset}&limit=${limit}&filter=${filter}`);
 
 const getProductById = (id: number) => axios.get<Product>(`/products/${id}`);
 

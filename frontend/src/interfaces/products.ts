@@ -1,3 +1,5 @@
+import { Brand } from "./brand";
+
 export interface Product {
   id: number;
   name: string;
@@ -5,6 +7,7 @@ export interface Product {
   price: number;
   image_url: string;
   brandId: number;
+  brand?: Brand;
 }
 
 export interface CreateProduct {

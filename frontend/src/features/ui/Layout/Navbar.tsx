@@ -8,9 +8,9 @@ export function NavBar() {
       rounded
     >
       <Navbar.Brand>
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+        <Link to='/' className="self-center whitespace-nowrap text-xl font-semibold dark:text-white cursor-pointer">
           IT Crowd Challenge
-        </span>
+        </Link>
       </Navbar.Brand>
       <div className="flex md:order-2">
         <Button>

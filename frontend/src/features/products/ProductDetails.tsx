@@ -12,7 +12,6 @@ export const ProductDetails = () => {
   useEffect(() => {
     if (params.id) {
       getProductById(+params.id).then(result => {
-        console.log(result);
         setProduct(result.data);
       });
     }
