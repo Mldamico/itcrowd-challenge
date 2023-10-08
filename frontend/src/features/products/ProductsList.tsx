@@ -4,6 +4,7 @@ import { getProducts } from '../../api/apiProducts';
 import ProductCard from './ProductCard';
 import { PaginationComponent } from '../ui/Layout/PaginationComponent';
 import { Button, TextInput } from 'flowbite-react';
+import { Loading } from '../ui/Layout/Loading';
 
 export const PAGESIZE = 3;
 
@@ -34,9 +35,7 @@ export const ProductsList = () => {
   };
 
 
-
-
-  if (!productCount) return <p>Loading...</p>;
+  if (!productCount) return <Loading />;
 
   return (
     <>
