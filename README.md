@@ -1,6 +1,26 @@
 # ITCrowd Javascript Challenge
 
-## Backend
+## Stack
+
+### Backend
+
+- Nest Framework with express
+- Cloudinary for image upload
+- Postgres DB
+- Bcrypt for hashing password
+- Passport-JWT for authentication strategy
+
+### Frontend
+
+- React (Vite) with typescript
+- Tailwind CSS and Flowbite-react for styles
+- Axios for HTTP request
+- React router for routing
+- React-hot-toast for some notifications
+
+## Running instructions
+
+### Backend
 
 0. Set environment variables. See .env.example as an example on how to be done.
 
@@ -22,7 +42,7 @@ docker-compose up -d
   http://localhost:3000/api/seed
 ```
 
-## Frontend
+### Frontend
 
 0. Set Environment Variables. Rename .env.example to .env.
 
@@ -37,15 +57,15 @@ Email: admin@itcrowd.com
 Password: 123456
 
 
-# Production:
+## Production APP:
 
-## Frontend:
+### Frontend:
 
 ```
   https://efficacious-spade-production.up.railway.app/
 ```
 
-## Backend
+### Backend
 
 Base Endpoint:
 
